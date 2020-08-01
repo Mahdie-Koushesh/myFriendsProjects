@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>OnlineLibrary</title>
+    <link href="Skin/Default.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--<link href="../Modules/admin/css/style.css" rel="stylesheet" />-->
+    <script src="../Scripts/Save.js"></script>
+    <script src="../Scripts/Utility.js"></script>
+    <script src="../Scripts/Config.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="#!admin-Book">مدیریت کتاب</a>
+        <a href="#!admin-Group">مدیریت دسته بندی</a>
+        <a href="#!admin-Users">مدیریت اعضا</a>
+        <a href="#!admin-Loan">مدیریت امانت</a>
+        <a href="#!admin-Users">ثبت نام</a>
+        <a href="#!User-SingIn">ورود </a>
+        <a href="#!User-main">اصلی</a>
+    </div>
+    <div>
+        <div class="T_nav">
+            <div class="ch_Name">
+                <p>کتابخانه آنلاین</p>
+            </div>
+        </div>
+        <div class="LContent" id="MainContent">
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    window.addEventListener("hashchange", AjaxCallGetPage);
+AjaxCallGetPage();
+window.addEventListener("load", ChangeContent);
+window.addEventListener("hashchange", ChangeContent);
+</script>

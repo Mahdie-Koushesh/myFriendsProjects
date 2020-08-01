@@ -1,0 +1,249 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{23A7630D-5EC4-4847-8AD0-63EA8B45A9A2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>aspa</RootNamespace>
+    <AssemblyName>aspa</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44324</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\projects\aspa-Sourse\aspa\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Css\aqua\active-bg.gif" />
+    <Content Include="Css\aqua\dark-bg.gif" />
+    <Content Include="Css\aqua\hover-bg.gif" />
+    <Content Include="Css\aqua\menuarrow.gif" />
+    <Content Include="Css\aqua\normal-bg.gif" />
+    <Content Include="Css\aqua\rowhover-bg.gif" />
+    <Content Include="Css\aqua\status-bg.gif" />
+    <Content Include="Css\aqua\theme.css" />
+    <Content Include="Css\aqua\title-bg.gif" />
+    <Content Include="Css\aqua\today-bg.gif" />
+    <Content Include="Css\calendar-blue.css" />
+    <Content Include="Css\calendar-blue2.css" />
+    <Content Include="Css\calendar-brown.css" />
+    <Content Include="Css\calendar-green.css" />
+    <Content Include="Css\calendar-system.css" />
+    <Content Include="Css\calendar-tas.css" />
+    <Content Include="Css\calendar-win2k-1.css" />
+    <Content Include="Css\calendar-win2k-2.css" />
+    <Content Include="Css\calendar-win2k-cold-1.css" />
+    <Content Include="Css\calendar-win2k-cold-2.css" />
+    <Content Include="Css\menuarrow.gif" />
+    <Content Include="Css\menuarrow2.gif" />
+    <Content Include="DateJs\calendar-af.js" />
+    <Content Include="DateJs\calendar-al.js" />
+    <Content Include="DateJs\calendar-bg.js" />
+    <Content Include="DateJs\calendar-big5-utf8.js" />
+    <Content Include="DateJs\calendar-big5.js" />
+    <Content Include="DateJs\calendar-br.js" />
+    <Content Include="DateJs\calendar-ca.js" />
+    <Content Include="DateJs\calendar-cs-utf8.js" />
+    <Content Include="DateJs\calendar-cs-win.js" />
+    <Content Include="DateJs\calendar-da.js" />
+    <Content Include="DateJs\calendar-de.js" />
+    <Content Include="DateJs\calendar-du.js" />
+    <Content Include="DateJs\calendar-el.js" />
+    <Content Include="DateJs\calendar-en.js" />
+    <Content Include="DateJs\calendar-es.js" />
+    <Content Include="DateJs\calendar-fa.js" />
+    <Content Include="DateJs\calendar-fi.js" />
+    <Content Include="DateJs\calendar-fr.js" />
+    <Content Include="DateJs\calendar-he-utf8.js" />
+    <Content Include="DateJs\calendar-hr-utf8.js" />
+    <Content Include="DateJs\calendar-hr.js" />
+    <Content Include="DateJs\calendar-hu.js" />
+    <Content Include="DateJs\calendar-it.js" />
+    <Content Include="DateJs\calendar-jp.js" />
+    <Content Include="DateJs\calendar-ko-utf8.js" />
+    <Content Include="DateJs\calendar-ko.js" />
+    <Content Include="DateJs\calendar-lt-utf8.js" />
+    <Content Include="DateJs\calendar-lt.js" />
+    <Content Include="DateJs\calendar-lv.js" />
+    <Content Include="DateJs\calendar-nl.js" />
+    <Content Include="DateJs\calendar-no.js" />
+    <Content Include="DateJs\calendar-pl-utf8.js" />
+    <Content Include="DateJs\calendar-pl.js" />
+    <Content Include="DateJs\calendar-pt.js" />
+    <Content Include="DateJs\calendar-ro.js" />
+    <Content Include="DateJs\calendar-ru.js" />
+    <Content Include="DateJs\calendar-ru_win_.js" />
+    <Content Include="DateJs\calendar-setup.js" />
+    <Content Include="DateJs\calendar-si.js" />
+    <Content Include="DateJs\calendar-sk.js" />
+    <Content Include="DateJs\calendar-sp.js" />
+    <Content Include="DateJs\calendar-sv.js" />
+    <Content Include="DateJs\calendar-tr.js" />
+    <Content Include="DateJs\calendar-zh.js" />
+    <Content Include="DateJs\calendar.js" />
+    <Content Include="DateJs\cn_utf8.js" />
+    <Content Include="DateJs\converter.js" />
+    <Content Include="DateJs\jalali.js" />
+    <Content Include="DateJs\pdate.min.js" />
+    <Content Include="Modules\admin\Book.html" />
+    <Content Include="Modules\admin\css\style.css" />
+    <Content Include="Modules\admin\Group.html" />
+    <Content Include="Modules\admin\Loan.html" />
+    <Content Include="Modules\admin\Users.html" />
+    <Content Include="Modules\User\css\style.css" />
+    <Content Include="Modules\User\image\5214-220-51.jpg" />
+    <Content Include="Modules\User\image\library.JPG" />
+    <Content Include="Modules\User\image\library2.JPG" />
+    <Content Include="Modules\User\image\library3.JPG" />
+    <Content Include="Modules\User\image\library4.JPG" />
+    <Content Include="Modules\User\image\logo.png" />
+    <Content Include="Modules\User\image\logo2.png" />
+    <Content Include="Modules\User\image\logo3.JPG" />
+    <Content Include="Modules\User\image\logo3.png" />
+    <Content Include="Modules\User\SingIn.html" />
+    <Content Include="Modules\User\main.html" />
+    <Content Include="Modules\User\SignUp.html" />
+    <Content Include="Scripts\Config.js" />
+    <Content Include="Scripts\JavaScript.js" />
+    <Content Include="Scripts\Save.js" />
+    <Content Include="Functions\AjRequests.aspx" />
+    <Content Include="Languages\Lang.en.js" />
+    <Content Include="Languages\Lang.Fa.js" />
+    <Content Include="Scripts\Utility.js" />
+    <Content Include="Templates\font\test.html" />
+    <Content Include="Templates\Template.Html" />
+    <Content Include="Templates\Images\arrowBottom.svg" />
+    <Content Include="Templates\Images\arrowLeft.svg" />
+    <Content Include="Templates\Images\cog.svg" />
+    <Content Include="Templates\Images\dot.svg" />
+    <Content Include="Templates\Images\edit.svg" />
+    <Content Include="Templates\Images\home.svg" />
+    <Content Include="Templates\Images\laptop.svg" />
+    <Content Include="Templates\Images\list.svg" />
+    <Content Include="Templates\Images\logo.png" />
+    <Content Include="Templates\Images\logout.svg" />
+    <Content Include="Templates\Images\menu.svg" />
+    <Content Include="Templates\Images\money.svg" />
+    <Content Include="Templates\Images\notification.svg" />
+    <Content Include="Templates\Images\plan.svg" />
+    <Content Include="Templates\Images\question.svg" />
+    <Content Include="Templates\Skin\Golden.css" />
+    <Content Include="Templates\Skin\Default.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Functions\AjRequests.aspx.cs">
+      <DependentUpon>AjRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Functions\AjRequests.aspx.designer.cs">
+      <DependentUpon>AjRequests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Functions\DbVariablesFunctions.cs" />
+    <Compile Include="Functions\Utility.cs" />
+    <Compile Include="Objects\AdminDefineBook.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\font\yekan.eot" />
+    <Content Include="Templates\font\yekan.ttf" />
+    <Content Include="Templates\font\yekan.woff" />
+    <Content Include="Templates\font\yekan.woff2" />
+    <Content Include="Templates\font\yekanbold.eot" />
+    <Content Include="Templates\font\yekanbold.ttf" />
+    <Content Include="Templates\font\yekanbold.woff" />
+    <Content Include="Templates\font\yekanbold.woff2" />
+    <Content Include="Templates\font\yekanlight.eot" />
+    <Content Include="Templates\font\yekanlight.ttf" />
+    <Content Include="Templates\font\yekanlight.woff" />
+    <Content Include="Templates\font\yekanlight.woff2" />
+    <Content Include="Templates\Images\debug.log" />
+    <Content Include="Languages\Lang-Fa.json" />
+    <Content Include="Json\variable\ProductType.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataBase\" />
+    <Folder Include="Modules\User\index\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.config" />
+    <Content Include="Json\variable\Book.json" />
+    <Content Include="Json\variable\User.json" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1092</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44324/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

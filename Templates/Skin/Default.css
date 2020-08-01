@@ -1,0 +1,525 @@
+﻿* {
+    font-family: 'yekan';
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'yekan';
+    src: url('font/yekan.eot');
+    src: local('☺'), url('../font/yekan.woff') format('woff'), url('../font/yekan.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'yekanbold';
+    src: url('font/yekanbold.eot');
+    src: local('☺'), url('../font/yekanbold.woff') format('woff'), url('../font/yekanbold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'yekanlight';
+    src: url('font/yekan.eot');
+    src: local('☺'), url('../font/yekanlight.woff') format('woff'), url('../font/yekanlight.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    background: #E5E5E5;
+}
+
+* {
+    font-size: 18px;
+    direction: rtl;
+    box-sizing: border-box;
+}
+
+.table {
+    width: 100%;
+}
+
+.Rmenu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: 60px;
+    overflow: auto;
+    z-index: 10;
+    background-color: #333333;
+    -webkit-box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
+    -webkit-transition: left 0.3s ease, width 0.3s ease;
+    -o-transition: left 0.3s ease, width 0.3s ease;
+    transition: left 0.3s ease, width 0.3s ease;
+}
+
+    .Rmenu::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    .Rmenu ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        .Rmenu ul li {
+            border-bottom: 1px solid #565656;
+        }
+
+            .Rmenu ul li:nth-last-child(1), .Rmenu ul li:nth-last-child(2), .Rmenu ul li:nth-last-child(3 ) {
+                border-bottom: none;
+            }
+
+            .Rmenu ul li a {
+                font-family: yekanlight;
+                text-decoration: none;
+                color: #fff;
+                padding: 10px 15px;
+                display: block;
+            }
+
+                .Rmenu ul li a img {
+                    width: 15px;
+                    vertical-align: middle;
+                    margin-left: 5px;
+                }
+
+    .Rmenu .ch_Name {
+        color: #fff;
+    }
+
+.ch_Name p {
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    font-family: yekanbold;
+    font-size: 20px;
+    padding-top: 15px;
+}
+
+.menuuserprofile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+    .menuuserprofile img {
+        vertical-align: middle;
+        border-style: none;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+    }
+
+    .menuuserprofile p {
+        font-family: yekanlight;
+        padding: 0 15px;
+    }
+
+.MenuImgArrowLeft {
+    background-image: url(Images/arrowLeft.svg);
+}
+
+.MenuImgArrowBottom {
+    background-image: url(Images/arrowBottom.svg);
+}
+
+.MenuTitleItemsWithArrow {
+    font-size: 18px;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-position-x: 15px;
+    display: block;
+}
+
+.SubMenu {
+    font-size: 14px;
+    list-style-type: none;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height 0.5s;
+    -o-transition: max-height 0.5s;
+    transition: max-height 0.5s;
+    padding-right: 18px !important;
+    background: #1B1B1B;
+}
+
+    .SubMenu li {
+        border-bottom: none !important;
+    }
+
+.SubMenuExpanded {
+    max-height: 300vh;
+}
+
+.Rm_knkf {
+    padding: 20px;
+    text-align: center;
+}
+
+    .Rm_knkf a {
+        font-size: 13px;
+    }
+
+    .Rm_knkf img {
+        vertical-align: middle;
+        margin-left: 6px;
+        filter: brightness(0.6);
+        width: 42px;
+    }
+
+.pnl {
+    background: #ffffff;
+    margin-top: -5%;
+    border-radius: 8px;
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15);
+    padding-bottom: 7px;
+}
+
+.T_nav {
+    padding-bottom: 5%;
+    background: linear-gradient(87deg,#2dce89,#2dcecc);
+    border-radius: 0 0 53px 53px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.Title_pnl {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 22px;
+    font-family: yekanbold;
+}
+
+.content_pnl {
+    display: table;
+}
+
+.Tnav_Icons {
+    text-align: left;
+    padding: 0 20px;
+}
+
+    .Tnav_Icons a {
+        text-decoration: none;
+    }
+
+.Notif_count {
+    border-radius: 50%;
+    padding: 0px 8px;
+    vertical-align: text-bottom;
+    font-family: Sahel-FD;
+    margin-left: -15px;
+    background: #ffffff;
+    box-shadow: 0px 0px 6px 0px hsla(0, 3%, 31%, 0.56);
+}
+
+.txtbox {
+    display: block;
+    width: 100%;
+    padding: 7px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #402d0d;
+    background-color: #FFF;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+.numberBox {
+    display: inline-block;
+    width: 100px;
+    padding: 7px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #402d0d;
+    background-color: #FFF;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+    .txtbox:focus {
+        outline-color: #402d0d;
+        box-shadow: 0px 0 0px 1pt hsla(38, 66%, 15%, 0.51);
+    }
+
+.item {
+    position: relative;
+    min-height: 1px;
+    padding: 0px 4px;
+}
+
+.btn {
+    background: #009688;
+    color: #fff;
+    padding: 12px 32px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+}
+
+    .btn:focus {
+        outline-width: 0;
+    }
+.btnTaghvim {
+    background: #009688;
+    color: powderblue;
+    padding: 1px 3px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 50px;
+    height: 50px;
+}
+
+    .btnTaghvim:focus {
+        outline-width: 0;
+    }
+.btndanger {
+    background: red;
+    color: #fff;
+    padding: 12px 32px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+}
+
+    .btndanger:focus {
+        outline-width: 0;
+    }
+
+.txtcenter {
+    text-align: center;
+}
+
+@media only screen and (min-width:1200px) {
+    .content_pnl {
+        padding: 20px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .kc-col-25-25-100-100 {
+        width: 25%;
+    }
+
+    .kc-col-33-33-100-100 {
+        width: 33.33%;
+        float: right;
+        height: 90px;
+    }
+
+    .LContent {
+        padding: 0 30px 0 30px;
+    }
+
+    .app_content {
+        margin-right: 18%;
+    }
+
+    .ResponsiveMenuIcon {
+        display: none;
+    }
+
+    .Rmenu {
+        width: 18%;
+    }
+
+
+    .ListItems {
+        padding-top: 20px;
+        width: 100%;
+    }
+
+        .ListItems .ListItemHeader {
+        }
+
+        .ListItems .ListItem {
+            display: flex;
+            padding: 10px 0;
+            margin: 5px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+}
+
+@media only screen and (max-width:1200px) and (min-width:992px ) {
+    .content_pnl {
+        padding: 20px;
+    }
+
+    .kc-col-25-25-100-100 {
+        width: 25%;
+        float: right;
+    }
+
+    .kc-col-33-33-100-100 {
+        width: 33.33%;
+        float: right;
+    }
+
+    .LContent {
+        padding: 0 30px 0 30px;
+    }
+
+    .ResponsiveMenuIcon {
+        display: none;
+    }
+
+    .Rmenu {
+        width: 18%;
+    }
+}
+
+@media only screen and (max-width:992px ) and (min-width: 768px) {
+    .kc-col-25-25-100-100 {
+        width: 50%;
+        float: right;
+    }
+
+    .kc-col-33-33-100-100 {
+        width: 50%;
+        float: right;
+    }
+
+    .LContent {
+        padding: 0 5px 0 5px;
+    }
+
+    .ResponsiveMenuIcon {
+        position: absolute;
+        right: 15px;
+        top: 25px;
+        z-index: 99;
+    }
+
+    .Rmenu {
+        width: 70%;
+    }
+
+    .Rmenu {
+        width: 70%;
+    }
+
+    .OpenResponsiveMenu {
+        animation: open;
+        transition: .5s;
+    }
+
+    .CloseResponsiveMenu {
+        animation: close;
+        transform: translateX(800px);
+        transition: .5s;
+    }
+}
+
+@media only screen and (max-width: 767px) and (min-width:0 ) {
+    .kc-col-25-25-100-100 {
+        width: 50%;
+        float: right;
+        height: 90px;
+    }
+
+    .kc-col-33-33-100-100 {
+        width: 50%;
+        float: right;
+    }
+
+    .LContent {
+        padding: 0 5px 0 5px;
+    }
+
+    .ResponsiveMenuIcon {
+        position: absolute;
+        right: 15px;
+        top: 25px;
+        z-index: 99;
+    }
+
+    .Rmenu {
+        width: 70%;
+    }
+
+    .OpenResponsiveMenu {
+        animation: open;
+        transition: .5s;
+    }
+
+    .CloseResponsiveMenu {
+        animation: close;
+        transform: translateX(800px);
+        transition: .5s;
+    }
+}
+
+.logout_btn {
+    border: none;
+    font-size: 16px;
+    background: none;
+    padding: 0;
+    width: 80%;
+    cursor: pointer;
+    text-align: right;
+    color: #fff;
+}
+
+
+@-webkit-keyframes open {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(800px);
+    }
+}
+
+@keyframes close {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(800px);
+    }
+}
+
+@-webkit-keyframes close {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(800px);
+    }
+}
+
+.RightmainMenu {
+    transition: .2s;
+    position: fixed;
+    z-index: 999;
+    padding-top: 20px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
