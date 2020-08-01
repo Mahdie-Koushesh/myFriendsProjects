@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/StyleSheet1.css">
+    <title> </title>
+</head>
+<body>
+    <div class="container mt-3 rounded main" id="main">
+        <div class="row justify-content-center align-items-center ">
+            <h4 class="mt-3">ثبت کتاب جدید</h4>
+        </div>
+        <div class="row ">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="name">نام کتاب</label>
+                    <input type="text" id="name" class="form-control">
+                </div>
+                <!--<div class=" form-group ">
+                    <label for=" image ">تصویر کتاب</label>
+                    <input type="file" id="image" class=" form-control multiple ">
+                </div>-->
+                <div class="form-group">
+                    <label for="writer">نام نویسنده</label>
+                    <input type="text" id="writer" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="print-year">سال چاپ</label>
+                    <input type="number" id="printyear" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Published">نوبت چاپ</label>
+                    <input type="text" id="published" class="form-control">
+                </div>
+            </div>
+            <div class=" col-md-6 ">
+      
+                <div class="form-group">
+                    <label for="publisher">ناشر</label>
+                    <input type="text" class="form-control" id="publisher">
+                </div>
+                <div class="form-group">
+                    <label for="group">دسته </label>
+                    <select id="type" class="form-control">
+                        <option value="0">دسته بندی کتاب  را انتخاب کنید...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="erae">نوع ارائه کتاب</label>
+                    <select  id="erae" class="form-control">
+                        <option value="0">نوع ارائه کتاب را انتخاب کنید...</option>
+                        <option value="1">دانلودpdf</option>
+                        <option value="2">امانت</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="status">وضعیت امانت</label>
+                    <input type="checkbox" id="status" class="form-group">
+                </div>
+            </div>
+            <button class=" btn btn-outline-info mr-auto ml-5 mb-5 " style=" width: 100px; " type="submit" onclick="SaveDefineBook()">ثبت</button>
+            <button class=" btn btn-outline-danger ml-5 mb-5 " style=" width: 100px;display: none; " type="submit">انصراف</button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js "
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n "
+            crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js "
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo "
+            crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js "
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 "
+            crossorigin="anonymous "></script>
+</body>
+</html>

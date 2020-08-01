@@ -1,0 +1,91 @@
+@font-face {
+    font-family: IranSans;
+    src: url(fonts/IranSans/eot/IRANSansWeb.eot) format('eot'), url(fonts/IranSans/ttf/IRANSansWeb.ttf) format('truetype'), url(fonts/IranSans/woff/IRANSansWeb.woff) format('woff'), url(fonts/IranSans/woff2/IRANSansWeb.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: IranSance;
+    src: url(fonts/IranSans/eot/IRANSansWeb_Bold.eot) format('eot'), url(fonts/IranSans/ttf/IRANSansWeb_Bold.ttf ) format('truetype'), url(fonts/IranSans/woff/IRANSansWeb_Bold.woff) format('woff'), url(fonts/IranSans/woff2/IRANSansWeb_Bold.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: IranSans;
+    src: url(fonts/IranSans/eot/IRANSansWeb_Light.eot) format('eot'), url(fonts/IranSans/ttf/IRANSansWeb_Light.ttf) format('truetype'), url(fonts/IranSans/woff/IRANSansWeb_Light.woff) format('woff'), url(fonts/IranSans/woff2/IRANSansWeb_Light.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: IranSans;
+    src: url(fonts/IranSans/eot/IRANSansWeb_Medium.eot) format('eot'), url(fonts/IranSans/ttf/IRANSansWeb_Medium.ttf) format('truetype'), url(fonts/IranSans/woff/IRANSansWeb_Medium.woff) format('woff'), url(fonts/IranSans/woff2/IRANSansWeb_Medium.woff2) format('woff2');
+}
+
+body {
+    direction: rtl;
+    text-align: right !important;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    background-color: rgb(255, 255, 255);
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/*for admin*/
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    position: fixed;
+    height: 100vh;
+    overflow: auto;
+    background: #105462;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 12px;
+}
+
+.sidebar a.active {
+    color: black;
+    background-color: #bdcebe88;
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #bdcebe88;
+}
+
+.content {
+    margin-right: 170px;
+}
+
+.main {
+    width: 480px;
+    background-color: white;
+    -webkit-box-shadow: 6px 8px 28px -14px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 6px 8px 28px -14px rgba(0, 0, 0, 0.75);
+    box-shadow: 6px 8px 28px -14px rgba(0, 0, 0, 0.75);
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .sidebar a {
+        float: right;
+    }
+    div.content {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
