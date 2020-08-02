@@ -64,7 +64,7 @@ function AjaxCallGetPage() {
     if (pageName !== "") {
         xhttp.open("Get", pageName, false);
     } else {
-        xhttp.open("Get", "/Modules/" + type + "/" + module + ".html", false);
+        xhttp.open("Get", "../Modules/" + type + "/" + module + ".html", false);
     }
     xhttp.send();
     if (xhttp.status == 200 || xhttp.readyState == 4) {

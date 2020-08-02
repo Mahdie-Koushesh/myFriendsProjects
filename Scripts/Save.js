@@ -133,7 +133,6 @@ function SaveDefineBook() {
     }
 }
 function UserSignUp() {
-    alert("2")
     var userNameElement = GetElement("userName");
     var userName = userNameElement.value.trim();
     if (userName == null || userName == "") {
