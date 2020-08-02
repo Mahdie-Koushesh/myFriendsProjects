@@ -5,10 +5,13 @@
     <title>OnlineLibrary</title>
     <link href="Skin/Default.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--<link href="../Modules/admin/css/style.css" rel="stylesheet" />-->
+    <link href="../Modules/User/css/style.css" rel="stylesheet" />-
     <script src="../Scripts/Save.js"></script>
     <script src="../Scripts/Utility.js"></script>
     <script src="../Scripts/Config.js"></script>
+    <script src="../Scripts/BindVariables.js"></script>
+    <script src="../Scripts/ItemTemplate.js"></script>
+
 </head>
 <body>
     <div class="sidebar">
@@ -31,10 +34,5 @@
     </div>
 </body>
 </html>
-
-<script>
-   window.addEventListener("hashchange", AjaxCallGetPage);
-AjaxCallGetPage();
-window.addEventListener("load", ChangeContent);
-window.addEventListener("hashchange", ChangeContent);
+<script src="../Scripts/JavaScript.js">
 </script>

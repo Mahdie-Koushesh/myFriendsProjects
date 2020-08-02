@@ -142,7 +142,9 @@
     <Content Include="Modules\User\SingIn.html" />
     <Content Include="Modules\User\main.html" />
     <Content Include="Modules\User\SignUp.html" />
+    <Content Include="Scripts\BindVariables.js" />
     <Content Include="Scripts\Config.js" />
+    <Content Include="Scripts\ItemTemplate.js" />
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\Save.js" />
     <Content Include="Functions\AjRequests.aspx" />

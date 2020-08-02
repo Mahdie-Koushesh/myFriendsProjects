@@ -147,11 +147,15 @@ function UserSignUp() {
         alert("وارد کردن گذرواژه الزامی است");
         return;
     }
-    var confirmPasswordElement = GetElement("confirm_password");
+    var confirmPasswordElement = GetElement("confirmPassword");
     var confirmPassword = confirmPasswordElement.value.trim();
     if (confirmPassword == null || confirmPassword == "") {
         confirmPasswordElement.focus();
         alert("وارد کردن مجددگذرواژه الزامی است");
+        return;
+    }
+    if (confirmPassword != password) {
+        alert("گذرواژه و تکرار آن با هم همخوانی ندارد");
         return;
     }
     var id = window.location.hash.replace("!#", "").split("-")[2];
@@ -166,11 +170,36 @@ function UserSignUp() {
     var resMessage = AjaxCall(urlOptions, 1);//جوابی که تابع سی شارپی میده
     if (TryParseInt(resMessage, "x") != "x") {
         alert("با موفقیت ثبت شد");
-        userName.value = "";
-        userName.focus();
-
+        userNameElement.value = "";
+        passwordElement.value = "";
+        confirmPasswordElement.value = "";
+        userNameElement.focus();
     }
     else {
         alert("failed");
+    }
+}
+function EditGroup(Id) {
+    var groups = GetGroupsById(Id);
+    GetElement("title").value = groups[0].Title;
+    GetElement("description").value = groups[0].Description;
+    GetElement("_btnSubmit").value = "ویرایش";
+    GetElement("_btnCancel").style.display = "block";
+}
+function DeleteGroup(id) {
+    var checked = confirm("آیا از حذف اطمینان دارید؟");
+    if (checked == false) {
+        alert("حذف لغو شد");
+    }
+    if (checked == true) {
+        var urlOptions = "type=4" +
+            "&id=" + id;
+        var resMessage = AjaxCall(urlOptions, 1);
+        if (TryParseInt(resMessage, "x") != "x") {
+            alert("با موفقیت حذف شد");
+        }
+        else {
+            alert(resMessage);
+        }
     }
 }

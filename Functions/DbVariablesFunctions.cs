@@ -60,6 +60,24 @@ namespace aspa.Functions
                 return "خطا در برقراری ارتباط با سرور";
             }
         }
+        public string Delete_Group()
+        {
+            try
+            {
+                var id = new Utility().GetPostedValue("id");
+                var GroupAddress = HttpContext.Current.Server.MapPath("~/Json/variable/ProductType.json");
+                var GroupList = new Utility().ReadJsonFile<Group>(GroupAddress);
+                Group item = new Group();
+                item = GroupList.SingleOrDefault(c => c.Id == id);
+                GroupList.Remove(item);
+                new Utility().WriteJsonFile(GroupList, GroupAddress);
+                return "1";
+            }
+            catch
+            {
+                return "مشکل داره";
+            }
+        }
         public string Add_Book()
         {
             try

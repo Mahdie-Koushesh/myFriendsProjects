@@ -48,10 +48,16 @@ function BindDropDownLists(elementId, titles, values) {
 function ChangeContent() {
     var hash = location.hash.replace("#!", "");
     var module = hash.split('-')[1];
+    var itemId = hash.split('-')[2];
     switch (module) {
         case "Book":
             ConfigDefineBook();
             break;
+        case "Group":
+            BindGroupList();
+            if (itemId != "" && itemId != undefined) {
+                EditGroup(itemId);
+            }
         default:
     }
 }
@@ -71,4 +77,18 @@ function AjaxCallGetPage() {
         GetElement('MainContent').innerHTML = xhttp.response;
     }
     return "خطا در ارتباط با سرور";
+}
+function GetGroups() {
+    var groups = JSON.parse(AjaxCallGet("../Json/variable/ProductType.json"));
+    return groups;
+}
+function GetGroupsById(Id) {
+    var groups = GetGroups();
+    groups = groups.filter(c => c.Id == Id);
+    return groups;
+}
+function EditPageUrl(id)//EditUrl
+{
+    var hash = location.hash.replace("#!", "").split('-');
+    location.href = "#!" + hash[0] + "-" + hash[1] + "-" + id;
 }

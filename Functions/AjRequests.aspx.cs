@@ -32,6 +32,9 @@ namespace aspa.Functions
                 case "3":
                     res = new DbVariablesFunctions().Sign_Up();
                     break;
+                case "4":
+                    res = new DbVariablesFunctions().Delete_Group();
+                    break;
                 default:
                     break;
             }
