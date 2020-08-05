@@ -180,6 +180,7 @@
     <Compile Include="Functions\DbVariablesFunctions.cs" />
     <Compile Include="Functions\Utility.cs" />
     <Compile Include="Objects\AdminDefineBook.cs" />
+    <Compile Include="Objects\ContactUs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +208,7 @@
     <Content Include="web.config" />
     <Content Include="Json\variable\Book.json" />
     <Content Include="Json\variable\User.json" />
+    <Content Include="Json\variable\Message.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

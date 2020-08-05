@@ -1,9 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\OnlineLibrary",
-    "\\OnlineLibrary\\Functions"
+    "\\Modules",
+    "\\Modules\\User",
+    "\\Objects",
+    "\\Properties",
+    "\\Scripts",
+    "\\Templates"
   ],
-  "SelectedNode": "\\OnlineLibrary",
+  "SelectedNode": "\\OnlineLibrary.sln",
   "PreviewInSolutionExplorer": false
 }

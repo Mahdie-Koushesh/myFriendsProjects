@@ -175,3 +175,6 @@ function UserSignUp() {
         alert("failed");
     }
 }
+function SendMsg() {
+
+}

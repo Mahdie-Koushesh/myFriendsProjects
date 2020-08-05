@@ -200,6 +200,66 @@ namespace aspa.Functions
 
             }
         }
+        public string SendMsg()
+        {
+            try
+            {
+                var typeStr = new Utility().GetPostedValue("type");
+                var name = new Utility().GetPostedValue("name");
+                var lastName = new Utility().GetPostedValue("Lastname");
+                var message = new Utility().GetPostedValue("message");
+                var phoneNumber = new Utility().GetPostedValue("phonenumber");
+                var email = new Utility().GetPostedValue("email");
+                var id = new Utility().GetPostedValue("id");
+                if (!int.TryParse(typeStr, out int type)) // تبدیل استرینگ به اینت 
+                {
+                    //GetAttack();
+                    return "خطا در پردازش اطلاعات";
+                }
+                if (string.IsNullOrEmpty(name))
+                {
+                    return "وارد کردن نام کاربری اجباری است";
+                }
+                if (string.IsNullOrEmpty(lastName))
+                {
+                    return "وارد کردن گذرواژه اجباری است";
+                }
+                if (string.IsNullOrEmpty(phoneNumber))
+                {
+                    return "وارد کردن  مجدد گذرواژه اجباری است";
+                }
+                if(string.IsNullOrEmpty(message))
+                {
+                    return "متن پیام خالی است...";
+                }
+                var MessageAddress = HttpContext.Current.Server.MapPath("~/Json/variable/Message.json");//برای آدرس دادن جیسون 
+                var MessageList = new Utility().ReadJsonFile<ContactUs>(MessageAddress);
+                ContactUs item = new ContactUs();
+
+                if (id != "")//edit
+                {
+                    item = MessageList.SingleOrDefault(c => c.Id == id);//linq
+                }
+                item.Name = name;
+                item.Lastname = lastName;
+                item.Phonenumber = phoneNumber;
+                item.Message = message;
+                item.Email = email;
+                item.SubmitDateTime = DateTime.Now.ToString();
+                if (id == "")
+                {
+                    item.Id = DateTime.Now.Ticks.ToString();
+                    MessageList.Add(item);
+                }
+                new Utility().WriteJsonFile(MessageList, MessageAddress);
+                return item.Id;
+            }
+            catch
+            {
+                return "خطا در برقراری ارتباط با سرور";
+
+            }
+        }
     }
 }
      
