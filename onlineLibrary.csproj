@@ -124,12 +124,16 @@
     <Content Include="DateJs\converter.js" />
     <Content Include="DateJs\jalali.js" />
     <Content Include="DateJs\pdate.min.js" />
+    <Content Include="Json\variable\images\Book\محمد2.png" />
     <Content Include="Modules\admin\Book.html" />
     <Content Include="Modules\admin\css\style.css" />
     <Content Include="Modules\admin\Group.html" />
     <Content Include="Modules\admin\Loan.html" />
+    <Content Include="Modules\admin\News.html" />
     <Content Include="Modules\admin\Users.html" />
+    <Content Include="Modules\User\BookUser.html" />
     <Content Include="Modules\User\css\style.css" />
+    <Content Include="Modules\User\Finalize.html" />
     <Content Include="Modules\User\image\5214-220-51.jpg" />
     <Content Include="Modules\User\image\library.JPG" />
     <Content Include="Modules\User\image\library2.JPG" />
@@ -150,6 +154,7 @@
     <Content Include="Functions\AjRequests.aspx" />
     <Content Include="Languages\Lang.en.js" />
     <Content Include="Languages\Lang.Fa.js" />
+    <Content Include="Scripts\Filter.js" />
     <Content Include="Scripts\Utility.js" />
     <Content Include="Templates\font\test.html" />
     <Content Include="Templates\Template.Html" />
@@ -203,12 +208,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataBase\" />
+    <Folder Include="Json\variable\images\News\" />
     <Folder Include="Modules\User\index\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
     <Content Include="Json\variable\Book.json" />
     <Content Include="Json\variable\User.json" />
+    <Content Include="Json\variable\Message.json" />
+    <Content Include="Json\variable\News.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

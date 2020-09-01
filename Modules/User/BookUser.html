@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="./image/logo3.JPG" style="width: 15px; height: 15px;">
+    <title> کتابخانه‌آنلاین |لیست کتاب ها </title>
+
+</head>
+
+<body>
+    <div class="container-fluid ">
+        <div class="row justify-content-center align-items-center border">
+            <div class="">
+                <input name="_txtBookSearch" type="text" id="_txtBookSearch" style="width:400px;" placeholder="برای جست و جو قسمتی از نام کتاب را وارد کنید" onkeypress="if (event.keyCode === 13) {
+    BindBookUserList();}">
+            </div>
+            <div>
+                <input type="submit" name="_btnBookSearch" value="جستجو" id="_btnBookSearch" class="btn btn-outline-success mr-5 mt-3" onclick="BindBookUserList()">
+            </div>
+        </div>
+    </div>
+    <div class="row my-5" id="divListBookUser">
+    </div>
+</body>
+</html>

@@ -52,11 +52,26 @@ function ChangeContent() {
     switch (module) {
         case "Book":
             ConfigDefineBook();
+            BindBookList();
+            if (itemId != "" && itemId != undefined) {
+                EditBook(itemId);
+            }
             break;
         case "Group":
             BindGroupList();
             if (itemId != "" && itemId != undefined) {
                 EditGroup(itemId);
+            }
+        case "Users":
+            BindUserList();
+        case "BookUser":
+            BindBookUserList();
+        case "main":
+            BindNewsList();
+        case "News":
+           BindNewsAdminList();
+            if (itemId != "" && itemId != undefined) {
+                EditNews(itemId);
             }
         default:
     }
@@ -76,6 +91,7 @@ function AjaxCallGetPage() {
     if (xhttp.status == 200 || xhttp.readyState == 4) {
         GetElement('MainContent').innerHTML = xhttp.response;
     }
+    OnkeyPressTxtBox();
     return "خطا در ارتباط با سرور";
 }
 function GetGroups() {
@@ -91,4 +107,50 @@ function EditPageUrl(id)//EditUrl
 {
     var hash = location.hash.replace("#!", "").split('-');
     location.href = "#!" + hash[0] + "-" + hash[1] + "-" + id;
+}
+function GetBooks() {
+    var books = JSON.parse(AjaxCallGet("../Json/variable/Book.json"));
+    return books;
+}
+function GetBooksById(Id) {
+    var books = GetBooks();
+    books = books.filter(c => c.Id == Id);
+    return books;
+}
+function GetUsers() {
+    var users = JSON.parse(AjaxCallGet("../Json/variable/User.json"));
+    return users;
+}
+function GetUsersById(Id) {
+    var users = GetUsers();
+    users = users.filter(c => c.Id == Id);
+    return users;
+}
+function GetGroupNameById(id) {
+    var groups = GetGroupsById(id);
+    var groupName = groups.map(c => c.Title);
+    return groupName;
+}
+function GetNews() {
+    var news = JSON.parse(AjaxCallGet("../Json/variable/News.json"));
+    return news;
+}
+function GetNewsById(Id) {
+    var News = GetNews();
+    News = News.filter(c => c.Id == Id);
+    return News;
+}
+function ScrollTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+function OnkeyPressTxtBox() {
+    var element = document.getElementsByClassName("form-control");
+    for (var i = 0; i < element.length; i++) {
+        element[i].onkeypress = function (event) {
+            if (event.keyCode == 13) {
+                GetElement("_btnSubmit").onclick();
+            }
+        }
+    }
 }

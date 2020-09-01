@@ -34,7 +34,26 @@ namespace aspa.Functions
                     break;
                 case "4":
                     res = new DbVariablesFunctions().Delete_Group();
+                    break; 
+                case "5":
+                    res = new DbVariablesFunctions().Delete_Book();
                     break;
+                case "6":
+                    res = new DbVariablesFunctions().Delete_User();
+                    break;
+                case "7":
+                    res = new DbVariablesFunctions().Send_Msg();
+                    break; 
+                case "8":
+                    res = new DbVariablesFunctions().Finalize();
+                    break; 
+                case "9":
+                    res = new DbVariablesFunctions().Add_News();
+                    break;
+                case "10":
+                    res = new DbVariablesFunctions().DeleteNews();
+                    break;
+
                 default:
                     break;
             }

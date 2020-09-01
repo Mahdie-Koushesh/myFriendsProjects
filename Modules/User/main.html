@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="./image/logo3.JPG" style="width: 15px; height: 15px;">
     <title> کتابخانه‌آنلاین |صفحه‌اصلی </title>
@@ -29,7 +29,7 @@
                     <a href=" #" class="nav-link active white-text">صفحه اصلی</a>
                 </li>
                 <li class="nav-item" id="book">
-                    <a href="#" class="nav-link white-text" onclick="ConfigDefineBook()">کتاب‌ها</a>
+                    <a href="./BookUser.html" class="nav-link white-text">کتاب‌ها</a>
                 </li>
 
                 <li class="nav-item">
@@ -41,7 +41,7 @@
                     <a href="./SignUp.html" class="nav-link white-text">ثبت نام</a>
                 </li>
                 <li class="nav-item">
-                    <a href="../SingIn.html" class="nav-link white-text">ورود</a>
+                    <a href="./SingIn.html" class="nav-link white-text">ورود</a>
                 </li>
             </ul>
         </div>
@@ -89,6 +89,21 @@
 
     </section>
     <!-- End new book list -->
+    <!--last news list-->
+    <section>
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col text-center">
+                    <h2 class="mt-5">آخرین اخبار</h2>
+                </div>
+            </div>
+            <div class="row my-5" id="divListNews">
+
+            </div>
+        </div>
+
+    </section>
+    <!-- End last news list -->
     <!-- contant US -->
     <section id="end" class="bg-light">
         <div class="container">
@@ -105,8 +120,8 @@
                             <input type="text" name="" id="name" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="name"> نام خانوادگی </label>
-                            <input type="text" name="" id="name" class="form-control">
+                            <label for="lastname"> نام خانوادگی </label>
+                            <input type="text" name="" id="lastname" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="phonenumber"> تلفن تماس </label>
@@ -120,7 +135,7 @@
                             <label for="message">متن پیام</label>
                             <textarea name="" id="message" cols="30" rows="3" class="form-control"></textarea>
                         </div>
-                        <button class="btn button mb-5 " style="width: 15%;">ارسال</button>
+                        <button class="btn button mb-5 " style="width: 15%;" onclick="Send_Msg()">ارسال</button>
                     </div>
                 </div>
             </div>

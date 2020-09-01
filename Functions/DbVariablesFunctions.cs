@@ -14,7 +14,7 @@ namespace aspa.Functions
     public class DbVariablesFunctions
     {
 
-        
+
         public string Add_Group()
         {
             try
@@ -93,6 +93,10 @@ namespace aspa.Functions
                 var status = new Utility().GetPostedValue("status");
                 var erae = new Utility().GetPostedValue("noeEraeKetab");
                 var id = new Utility().GetPostedValue("id");
+                var userName = new Utility().GetPostedValue("userName");
+                var submitDateAmanat = new Utility().GetPostedValue("submitDateAmanat");
+                var image = HttpContext.Current.Request.Files["image"];
+
                 if (!int.TryParse(typeStr, out int type)) // تبدیل استرینگ به اینت 
                 {
                     //GetAttack();
@@ -102,7 +106,7 @@ namespace aspa.Functions
                 {
                     return "وارد کردن نام کتاب اجباری است";
                 }
-                if (Category=="0")
+                if (Category == "0")
                 {
                     return "لطفا دسته بندی را انتخاب کنید";
                 }
@@ -130,6 +134,13 @@ namespace aspa.Functions
                 {
                     return "انتخاب نوع ارائه کتاب اجباری است";
                 }
+                List<string> imageAddressList = new List<string>();
+                if (image != null)
+                {
+                    var imagesAddress = "/Json/variable/images/Book/" + image.FileName.Replace(" ", "-");
+                    image.SaveAs(HttpContext.Current.Server.MapPath("~/" + imagesAddress));
+                    imageAddressList.Add(imagesAddress);
+                }
                 var BookAddress = HttpContext.Current.Server.MapPath("~/Json/variable/Book.json");//برای آدرس دادن جیسون 
                 var BookList = new Utility().ReadJsonFile<DefineBook>(BookAddress);
                 DefineBook item = new DefineBook();
@@ -144,7 +155,9 @@ namespace aspa.Functions
                 item.published = published;
                 item.erae = erae;
                 item.status = status;
-                item.Type = type;
+                item.image = imageAddressList;
+                item.UserName = userName;
+                item.SubmitDateAmant = submitDateAmanat;
                 //item.trnaslator = translator;
                 item.PrintYear = printyear;
                 item.SubmitDateTime = DateTime.Now.ToString();
@@ -161,9 +174,45 @@ namespace aspa.Functions
                 //}
                 return item.Id;
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 return err.Message;
+            }
+        }
+        public string Delete_Book()
+        {
+            try
+            {
+                var id = new Utility().GetPostedValue("id");
+                var BookAddress = HttpContext.Current.Server.MapPath("~/Json/variable/Book.json");
+                var BookList = new Utility().ReadJsonFile<DefineBook>(BookAddress);
+                DefineBook item = new DefineBook();
+                item = BookList.SingleOrDefault(c => c.Id == id);
+                BookList.Remove(item);
+                new Utility().WriteJsonFile(BookList, BookAddress);
+                return "1";
+            }
+            catch
+            {
+                return "مشکل داره";
+            }
+        }
+        public string Delete_User()
+        {
+            try
+            {
+                var id = new Utility().GetPostedValue("id");
+                var UserAddress = HttpContext.Current.Server.MapPath("~/Json/variable/User.json");
+                var UserList = new Utility().ReadJsonFile<DefineUser>(UserAddress);
+                DefineUser item = new DefineUser();
+                item = UserList.SingleOrDefault(c => c.Id == id);
+                UserList.Remove(item);
+                new Utility().WriteJsonFile(UserList, UserAddress);
+                return "1";
+            }
+            catch
+            {
+                return "مشکل داره";
             }
         }
         public string Sign_Up()
@@ -218,6 +267,195 @@ namespace aspa.Functions
 
             }
         }
+        public string Send_Msg()
+        {
+            try
+            {
+                var typeStr = new Utility().GetPostedValue("type");
+                var nameStr = new Utility().GetPostedValue("name");
+                var lastnameStr = new Utility().GetPostedValue("lastname");
+                var phonenumberStr = new Utility().GetPostedValue("phonenumber");
+                var emailStr = new Utility().GetPostedValue("email");
+                var messageStr = new Utility().GetPostedValue("message");
+                var id = new Utility().GetPostedValue("id");
+                if (!int.TryParse(typeStr, out int type)) // تبدیل استرینگ به اینت 
+                {
+                    //GetAttack();
+                    return "خطا در پردازش اطلاعات";
+                }
+                if (string.IsNullOrEmpty(nameStr))
+                {
+                    return "وارد کردن نام اجباری است";
+                }
+                var MessageAddress = HttpContext.Current.Server.MapPath("~/Json/variable/Message.json");//برای آدرس دادن جیسون 
+                var MessageList = new Utility().ReadJsonFile<Message>(MessageAddress);
+                Message item = new Message();
+                if (id != "")//edit
+                {
+                    item = MessageList.SingleOrDefault(c => c.Id == id);//linq
+                }
+                item.Name = nameStr;
+                item.LastName = lastnameStr;
+                item.PhoneNumber = phonenumberStr;
+                item.Email = emailStr;
+                item.Text = messageStr;
+                item.SubmitDateTime = DateTime.Now.ToString();
+                if (id == "")
+                {
+                    item.Id = DateTime.Now.Ticks.ToString();
+                    MessageList.Add(item);
+                }
+                new Utility().WriteJsonFile(MessageList, MessageAddress);
+
+                //if (ok)
+                //{
+                //    return "1";
+                //}
+                return item.Id;
+            }
+            catch
+            {
+                return "خطا در برقراری ارتباط با سرور";
+            }
+        }
+        public string Finalize()
+        {
+            try
+            {
+                var typeStr = new Utility().GetPostedValue("type");
+                var firstName = new Utility().GetPostedValue("firstName");
+                var lastName = new Utility().GetPostedValue("lastName");
+                var nationalCode = new Utility().GetPostedValue("nationalCode");
+                var fatherName = new Utility().GetPostedValue("fatherName");
+                var phoneNumber = new Utility().GetPostedValue("phoneNumber");
+                var email = new Utility().GetPostedValue("email");
+                var website = new Utility().GetPostedValue("website");
+                var address = new Utility().GetPostedValue("address");
+                var id = new Utility().GetPostedValue("id");
+                if (!int.TryParse(typeStr, out int type)) // تبدیل استرینگ به اینت 
+                {
+                    //GetAttack();
+                    return "خطا در پردازش اطلاعات";
+                }
+                if (string.IsNullOrEmpty(firstName))
+                {
+                    return "وارد کردن نام  اجباری است";
+                }
+                if (string.IsNullOrEmpty(lastName))
+                {
+                    return "وارد کردن نام خانوادگی اجباری است";
+                }
+                if (string.IsNullOrEmpty(nationalCode))
+                {
+                    return "وارد کردن  کدملی اجباری است";
+                }
+                if (string.IsNullOrEmpty(fatherName))
+                {
+                    return "وارد کردن  نام پدر اجباری است";
+                }
+                
+                var UserAddress = HttpContext.Current.Server.MapPath("~/Json/variable/User.json");//برای آدرس دادن جیسون 
+                var UserList = new Utility().ReadJsonFile<DefineUser>(UserAddress);
+                DefineUser item = new DefineUser();
+
+                if (id != "")//edit
+                {
+                    item = UserList.SingleOrDefault(c => c.Id == id);//linq
+                }
+                item.FirstName = firstName;
+                item.LastName = lastName;
+                item.NationalCode = nationalCode;
+                item.FatherName = fatherName;
+                item.PhoneNumber = phoneNumber;
+                item.Email = email;
+                item.SiteUrl = website;
+                item.Address = address;
+                item.SubmitDateTime = DateTime.Now.ToString();
+                if (id == "")
+                {
+                    item.Id = DateTime.Now.Ticks.ToString();
+                    UserList.Add(item);
+                }
+                new Utility().WriteJsonFile(UserList, UserAddress);
+                return item.Id;
+            }
+            catch
+            {
+                return "خطا در برقراری ارتباط با سرور";
+
+            }
+        }
+        public string Add_News()
+        {
+            try
+            {
+                var typeStr = new Utility().GetPostedValue("type");
+                var titleNewsStr = new Utility().GetPostedValue("titlenews");
+                var descnewsStr = new Utility().GetPostedValue("descnews");
+                var id = new Utility().GetPostedValue("id");
+                var image = HttpContext.Current.Request.Files["image"];
+                if (!int.TryParse(typeStr, out int type)) // تبدیل استرینگ به اینت 
+                {
+                    //GetAttack();
+                    return "خطا در پردازش اطلاعات";
+                }
+                if (string.IsNullOrEmpty(titleNewsStr))
+                {
+                    return "وارد کردن عنوان خبر اجباری است";
+                } 
+                if (string.IsNullOrEmpty(descnewsStr))
+                {
+                    return "وارد کردن شرح خبر اجباری است";
+                }
+                List<string> imageAddressList = new List<string>();
+                if (image != null)
+                {
+                    var imagesAddress = "/Json/variable/images/News/" + image.FileName.Replace(" ", "-");
+                    image.SaveAs(HttpContext.Current.Server.MapPath("~/" + imagesAddress));
+                    imageAddressList.Add(imagesAddress);
+                }
+                var NewsAddress = HttpContext.Current.Server.MapPath("~/Json/variable/News.json");//برای آدرس دادن جیسون 
+                var NewsList = new Utility().ReadJsonFile<DefineNews>(NewsAddress);
+                DefineNews item = new DefineNews();
+                if (id != "")//edit
+                {
+                    item = NewsList.SingleOrDefault(c => c.Id == id);//linq
+                }
+                item.TitleNews = titleNewsStr;
+                item.DesNews = descnewsStr;
+                item.SubmitDateTime = DateTime.Now.ToString();
+                item.ImageNews = imageAddressList;
+                if (id == "")
+                {
+                    item.Id = DateTime.Now.Ticks.ToString();
+                    NewsList.Add(item);
+                }
+                new Utility().WriteJsonFile(NewsList, NewsAddress);
+                return item.Id;
+            }
+            catch
+            {
+                return "خطا در برقراری ارتباط با سرور";
+            }
+        }
+        public string DeleteNews()
+        {
+            try
+            {
+                var id = new Utility().GetPostedValue("id");
+                var NewsAddress = HttpContext.Current.Server.MapPath("~/Json/variable/News.json");
+                var NewsList = new Utility().ReadJsonFile<Group>(NewsAddress);
+                Group item = new Group();
+                item = NewsList.SingleOrDefault(c => c.Id == id);
+                NewsList.Remove(item);
+                new Utility().WriteJsonFile(NewsList, NewsAddress);
+                return "1";
+            }
+            catch
+            {
+                return "مشکل داره";
+            }
+        }
     }
 }
-     
+

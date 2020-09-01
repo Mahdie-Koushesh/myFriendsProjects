@@ -4,37 +4,45 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
     <link rel="stylesheet" href="../css/StyleSheet1.css">
-    <title>تعریف دسته بندی</title>
+    <title>مدیریت اخبار</title>
+
 </head>
 <body>
     <div class="container mt-3 rounded main" id="main">
         <div class="d-flex justify-content-center align-items-center ">
-            <h4 class="mt-3">ثبت دسته بندی جدید</h4>
+            <h4 class="mt-3">ثبت خبر جدید</h4>
         </div>
         <div class="row justify-content-center align-items-center">
             <div>
                 <div class="form-group">
-                    عنوان دسته:
-                    <input type="text" class="form-control" id="title">
+                    عنوان خبر:
+                    <input type="text" class="form-control" id="titlenews">
                 </div>
                 <div class="form-group">
-                    توضیحات:
-                    <textarea class="form-control" cols="30" rows="3" id="description"></textarea>
+                    <p>عکس خبر:</p>
+                    <input type="file" name="_fuImage" id="_fuImage">
                 </div>
-                <button class="btn btn-outline-info mr-auto ml-5 mb-5" style="width: 100px;" id="_btnSubmit" type="submit" onclick="SaveDefineGroup()">ثبت</button>
+                <div class="form-group">
+                    شرح خبر:
+                    <textarea class="form-control" cols="30" rows="3" id="descnews"></textarea>
+                </div>
+                <button class="btn btn-outline-info mr-auto ml-5 mb-5" style="width: 100px;" id="_btnSubmit" type="submit" onclick="SaveNews()">ثبت</button>
                 <button class="btn btn-outline-danger  ml-5 mb-5" style="width: 100px;display: none;" id="_btnCancel" onclick="history.go(-1)" type="submit">انصراف</button>
             </div>
         </div>
-        <table id="divListGroup" class="table border table-striped mt-5">
-            <thead>
-                <tr>
-                    <th>نام دسته بندی </th>
-                    <th>توضیحات</th>
-                    <th>حذف</th>
-                </tr>
-            </thead>
-        </table>
+
     </div>
+
+    <table id="divListNews" class="table border table-striped mt-5">
+        <thead>
+            <tr>
+                <th>عنوان خبر </th>
+                <th>شرح خبر</th>
+                <th>ویرایش /حذف</th>
+            </tr>
+        </thead>
+
+    </table>
 </body>
 
 
