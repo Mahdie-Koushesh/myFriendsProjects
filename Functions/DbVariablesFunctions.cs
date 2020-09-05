@@ -55,8 +55,9 @@ namespace aspa.Functions
                 //}
                 return item.Id;
             }
-            catch
+            catch(Exception EX)
             {
+                var msg = EX.Message;
                 return "خطا در برقراری ارتباط با سرور";
             }
         }
@@ -94,7 +95,7 @@ namespace aspa.Functions
                 var erae = new Utility().GetPostedValue("noeEraeKetab");
                 var id = new Utility().GetPostedValue("id");
                 var userName = new Utility().GetPostedValue("userName");
-                var submitDateAmanat = new Utility().GetPostedValue("submitDateAmanat");
+                //var submitDateAmanat = new Utility().GetPostedValue("submitDateAmanat");
                 var image = HttpContext.Current.Request.Files["image"];
 
                 if (!int.TryParse(typeStr, out int type)) // تبدیل استرینگ به اینت 
@@ -147,6 +148,7 @@ namespace aspa.Functions
                 if (id != "")//edit
                 {
                     item = BookList.SingleOrDefault(c => c.Id == id);//linq
+                    item.SubmitDateAmant = DateTime.Now.ToString();
                 }
                 item.Name = Title;
                 item.Writer = writer;
@@ -157,7 +159,6 @@ namespace aspa.Functions
                 item.status = status;
                 item.image = imageAddressList;
                 item.UserName = userName;
-                item.SubmitDateAmant = submitDateAmanat;
                 //item.trnaslator = translator;
                 item.PrintYear = printyear;
                 item.SubmitDateTime = DateTime.Now.ToString();
@@ -223,6 +224,14 @@ namespace aspa.Functions
                 var userName = new Utility().GetPostedValue("userName");
                 var password = new Utility().GetPostedValue("password");
                 var confirmPassword = new Utility().GetPostedValue("confirmPassword");
+                var firstName = new Utility().GetPostedValue("firstName");
+                var lastName = new Utility().GetPostedValue("lastName");
+                var nationalCode = new Utility().GetPostedValue("nationalCode");
+                var fatherName = new Utility().GetPostedValue("fatherName");
+                var phoneNumber = new Utility().GetPostedValue("phoneNumber");
+                var email = new Utility().GetPostedValue("email");
+                var website = new Utility().GetPostedValue("website");
+                var address = new Utility().GetPostedValue("address");
                 var id = new Utility().GetPostedValue("id");
                 if (!int.TryParse(typeStr, out int type)) // تبدیل استرینگ به اینت 
                 {
@@ -241,6 +250,22 @@ namespace aspa.Functions
                 {
                     return "وارد کردن  مجدد گذرواژه اجباری است";
                 }
+                if (string.IsNullOrEmpty(firstName))
+                {
+                    return "وارد کردن نام  اجباری است";
+                }
+                if (string.IsNullOrEmpty(lastName))
+                {
+                    return "وارد کردن نام خانوادگی اجباری است";
+                }
+                if (string.IsNullOrEmpty(nationalCode))
+                {
+                    return "وارد کردن  کدملی اجباری است";
+                }
+                if (string.IsNullOrEmpty(fatherName))
+                {
+                    return "وارد کردن  نام پدر اجباری است";
+                }
                 var UserAddress = HttpContext.Current.Server.MapPath("~/Json/variable/User.json");//برای آدرس دادن جیسون 
                 var UserList = new Utility().ReadJsonFile<DefineUser>(UserAddress);
                 DefineUser item = new DefineUser();
@@ -252,6 +277,14 @@ namespace aspa.Functions
                 item.UserName = userName;
                 item.Password = password;
                 item.ConfirmPassword = confirmPassword;
+                item.FirstName = firstName;
+                item.LastName = lastName;
+                item.NationalCode = nationalCode;
+                item.FatherName = fatherName;
+                item.PhoneNumber = phoneNumber;
+                item.Email = email;
+                item.SiteUrl = website;
+                item.Address = address;
                 item.SubmitDateTime = DateTime.Now.ToString();
                 if (id == "")
                 {
@@ -318,73 +351,73 @@ namespace aspa.Functions
                 return "خطا در برقراری ارتباط با سرور";
             }
         }
-        public string Finalize()
-        {
-            try
-            {
-                var typeStr = new Utility().GetPostedValue("type");
-                var firstName = new Utility().GetPostedValue("firstName");
-                var lastName = new Utility().GetPostedValue("lastName");
-                var nationalCode = new Utility().GetPostedValue("nationalCode");
-                var fatherName = new Utility().GetPostedValue("fatherName");
-                var phoneNumber = new Utility().GetPostedValue("phoneNumber");
-                var email = new Utility().GetPostedValue("email");
-                var website = new Utility().GetPostedValue("website");
-                var address = new Utility().GetPostedValue("address");
-                var id = new Utility().GetPostedValue("id");
-                if (!int.TryParse(typeStr, out int type)) // تبدیل استرینگ به اینت 
-                {
-                    //GetAttack();
-                    return "خطا در پردازش اطلاعات";
-                }
-                if (string.IsNullOrEmpty(firstName))
-                {
-                    return "وارد کردن نام  اجباری است";
-                }
-                if (string.IsNullOrEmpty(lastName))
-                {
-                    return "وارد کردن نام خانوادگی اجباری است";
-                }
-                if (string.IsNullOrEmpty(nationalCode))
-                {
-                    return "وارد کردن  کدملی اجباری است";
-                }
-                if (string.IsNullOrEmpty(fatherName))
-                {
-                    return "وارد کردن  نام پدر اجباری است";
-                }
+        //public string Finalize()
+        //{
+        //    try
+        //    {
+        //        var typeStr = new Utility().GetPostedValue("type");
+        //        var firstName = new Utility().GetPostedValue("firstName");
+        //        var lastName = new Utility().GetPostedValue("lastName");
+        //        var nationalCode = new Utility().GetPostedValue("nationalCode");
+        //        var fatherName = new Utility().GetPostedValue("fatherName");
+        //        var phoneNumber = new Utility().GetPostedValue("phoneNumber");
+        //        var email = new Utility().GetPostedValue("email");
+        //        var website = new Utility().GetPostedValue("website");
+        //        var address = new Utility().GetPostedValue("address");
+        //        var id = new Utility().GetPostedValue("id");
+        //        if (!int.TryParse(typeStr, out int type)) // تبدیل استرینگ به اینت 
+        //        {
+        //            //GetAttack();
+        //            return "خطا در پردازش اطلاعات";
+        //        }
+        //        if (string.IsNullOrEmpty(firstName))
+        //        {
+        //            return "وارد کردن نام  اجباری است";
+        //        }
+        //        if (string.IsNullOrEmpty(lastName))
+        //        {
+        //            return "وارد کردن نام خانوادگی اجباری است";
+        //        }
+        //        if (string.IsNullOrEmpty(nationalCode))
+        //        {
+        //            return "وارد کردن  کدملی اجباری است";
+        //        }
+        //        if (string.IsNullOrEmpty(fatherName))
+        //        {
+        //            return "وارد کردن  نام پدر اجباری است";
+        //        }
                 
-                var UserAddress = HttpContext.Current.Server.MapPath("~/Json/variable/User.json");//برای آدرس دادن جیسون 
-                var UserList = new Utility().ReadJsonFile<DefineUser>(UserAddress);
-                DefineUser item = new DefineUser();
+        //        var UserAddress = HttpContext.Current.Server.MapPath("~/Json/variable/User.json");//برای آدرس دادن جیسون 
+        //        var UserList = new Utility().ReadJsonFile<DefineUser>(UserAddress);
+        //        DefineUser item = new DefineUser();
 
-                if (id != "")//edit
-                {
-                    item = UserList.SingleOrDefault(c => c.Id == id);//linq
-                }
-                item.FirstName = firstName;
-                item.LastName = lastName;
-                item.NationalCode = nationalCode;
-                item.FatherName = fatherName;
-                item.PhoneNumber = phoneNumber;
-                item.Email = email;
-                item.SiteUrl = website;
-                item.Address = address;
-                item.SubmitDateTime = DateTime.Now.ToString();
-                if (id == "")
-                {
-                    item.Id = DateTime.Now.Ticks.ToString();
-                    UserList.Add(item);
-                }
-                new Utility().WriteJsonFile(UserList, UserAddress);
-                return item.Id;
-            }
-            catch
-            {
-                return "خطا در برقراری ارتباط با سرور";
+        //        if (id != "")//edit
+        //        {
+        //            item = UserList.SingleOrDefault(c => c.Id == id);//linq
+        //        }
+        //        item.FirstName = firstName;
+        //        item.LastName = lastName;
+        //        item.NationalCode = nationalCode;
+        //        item.FatherName = fatherName;
+        //        item.PhoneNumber = phoneNumber;
+        //        item.Email = email;
+        //        item.SiteUrl = website;
+        //        item.Address = address;
+        //        item.SubmitDateTime = DateTime.Now.ToString();
+        //        if (id == "")
+        //        {
+        //            item.Id = DateTime.Now.Ticks.ToString();
+        //            UserList.Add(item);
+        //        }
+        //        new Utility().WriteJsonFile(UserList, UserAddress);
+        //        return item.Id;
+        //    }
+        //    catch
+        //    {
+        //        return "خطا در برقراری ارتباط با سرور";
 
-            }
-        }
+        //    }
+        //}
         public string Add_News()
         {
             try

@@ -1,6 +1,15 @@
 ﻿function BindGroupList() {
-    GetElement("divListGroup").innerHTML += "";
-    var groups = GetGroups();
+    GetElement("divListGroup").innerHTML = "";
+    var txtSearch = GetElement("_txtGroupSearch").value;
+    if (txtSearch != "") {
+        var groups = GroupFilter(txtSearch);
+    }
+    if (txtSearch == "") {
+        var groups = GetGroups();
+    }
+    if (groups == "" || groups == false) {
+        return false;
+    }
     for (var i = 0; i < groups.length; i++) {
         GetElement("divListGroup").innerHTML +=
             GroupsItem
@@ -10,21 +19,7 @@
     }
 }
 function BindBookList() {
-    GetElement("divListBook").innerHTML = "<table id=\"divListBook\" class=\"table border table - striped mt - 5\">" +
-        "<thead>" +
-        "<tr>" +
-        "<th>نام کتاب</th>" +
-        "<th>نویسنده</th>" +
-        "<th>سال چاپ</th>" +
-        "<th>ناشر</th>" +
-        "<th>نوبت چاپ</th>" +
-        "<th>دسته بندی</th>" +
-        "<th>نوع ارائه کتاب</th>" +
-        "<th>وضعیت</th>" +
-        "<th>ویرایش/حذف</th>" +
-        "</tr>" +
-        "</thead>" +
-        "</table>";
+    GetElement("divListBook").innerHTML = "";
     var txtSearch = GetElement("_txtBookSearch").value;
     if (txtSearch != "") {
         var books = BookFilter(txtSearch);
@@ -62,8 +57,17 @@ function BindBookList() {
     }
 }
 function BindUserList() {
-    GetElement("divListUser").innerHTML += "";
-    var users = GetUsers();
+    GetElement("divListUser").innerHTML = "";
+    var txtSearch = GetElement("_txtUserSearch").value;
+    if (txtSearch != "") {
+        var users = UserFilter(txtSearch);
+    }
+    if (txtSearch == "") {
+        var users = GetUsers();
+    }
+    if (users == "" || users == false) {
+        return false;
+    }
     for (var i = 0; i < users.length; i++) {
 
         GetElement("divListUser").innerHTML +=
@@ -85,7 +89,7 @@ function BindUserList() {
 function BindNewsList() {
     GetElement("divListNews").innerHTML += "";
     var news = GetNews();
-    for (var i = (news.length)-1; i >= (news.length)-3; i--) {
+    for (var i = (news.length) - 1; i >= (news.length) - 3; i--) {
         GetElement("divListNews").innerHTML +=
             NewsUserItem
                 .replace("[[Image]]", news[i].ImageNews)
@@ -95,14 +99,24 @@ function BindNewsList() {
     }
 }
 function BindNewsAdminList() {
-    GetElement("divListNews").innerHTML += "";
-    var news = GetNews();
+    GetElement("divListNews").innerHTML = "";
+    var txtSearch = GetElement("_txtNewsSearch").value;
+    if (txtSearch != "") {
+        var news = NewsFilter(txtSearch);
+    }
+    if (txtSearch == "") {
+        var news = GetNews();
+    }
+    if (news == "" || news == false) {
+        return false;
+    }
+
     for (var i = 0; i < news.length; i++) {
         GetElement("divListNews").innerHTML +=
             NewsAdminItem
-            .replace("[[Name]]", news[i].TitleNews)
-            .replace("[[Description]]", news[i].DesNews)
-            .replace(/\[\[Id\]\]/g, news[i].Id);
+                .replace("[[Name]]", news[i].TitleNews)
+                .replace("[[Description]]", news[i].DesNews)
+                .replace(/\[\[Id\]\]/g, news[i].Id);
     }
 }
 function BindBookUserList() {
@@ -134,9 +148,37 @@ function BindBookUserList() {
         if (books[i].erae == "2") {
             GetElement("downloadPDF" + books[i].Id).style.display = "none";
         }
+        if (books[i].status == "1") {
+            GetElement("amant" + books[i].Id).style.display = "none";
+            GetElement("textAmant" + books[i].Id).style.display = "block";
+        }
+        if (books[i].status == "0") {
+            GetElement("amant" + books[i].Id).style.display = "block";
+            GetElement("textAmant" + books[i].Id).style.display = "none";
+        }
     }
 }
-
+function BindLoanList() {
+    GetElement("divListLoan").innerHTML = "";
+    var txtSearch = GetElement("_txtLoanSearch").value;
+    if (txtSearch != "") {
+        var loans = LoanFilter(txtSearch);
+    }
+    if (txtSearch == "") {
+        var loans = GetLoan();
+    }
+    if (loans == "" || loans == false) {
+        return false;
+    }
+    for (var i = 0; i < loans.length; i++) {
+        GetElement("divListLoan").innerHTML +=
+            LoanItem
+                .replace("[[Name]]", loans[i].Name)
+                .replace("[[UserName]]", loans[i].UserName)
+                .replace("[[SubmitDateAmant]]", loans[i].SubmitDateAmant)
+                .replace(/\[\[Id\]\]/g, loans[i].Id);
+    }
+}
 
 
 

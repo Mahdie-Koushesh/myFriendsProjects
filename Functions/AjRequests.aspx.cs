@@ -44,9 +44,9 @@ namespace aspa.Functions
                 case "7":
                     res = new DbVariablesFunctions().Send_Msg();
                     break; 
-                case "8":
-                    res = new DbVariablesFunctions().Finalize();
-                    break; 
+                //case "8":
+                //    res = new DbVariablesFunctions().Finalize();
+                    //break; 
                 case "9":
                     res = new DbVariablesFunctions().Add_News();
                     break;

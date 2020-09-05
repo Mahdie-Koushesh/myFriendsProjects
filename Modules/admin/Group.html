@@ -25,16 +25,27 @@
                 <button class="btn btn-outline-danger  ml-5 mb-5" style="width: 100px;display: none;" id="_btnCancel" onclick="history.go(-1)" type="submit">انصراف</button>
             </div>
         </div>
-        <table id="divListGroup" class="table border table-striped mt-5">
-            <thead>
-                <tr>
-                    <th>نام دسته بندی </th>
-                    <th>توضیحات</th>
-                    <th>حذف</th>
-                </tr>
-            </thead>
-        </table>
+
     </div>
+    <div class="container-fluid ">
+        <div class="row justify-content-center align-items-center border">
+            <div class="">
+                <input name="_txtGroupSearch" type="text" id="_txtGroupSearch" style="width: 400px;" placeholder="برای جست و جو قسمتی از نام دسته را وارد کنید" onkeypress="if (event.keyCode === 13) { BindGroupList(); }">
+            </div>
+            <div>
+                <input type="submit" name="_btnGroupSearch" value="جستجو" id="_btnGroupSearch" class="btn btn-outline-success mr-5 mt-3" onclick="BindGroupList()">
+            </div>
+        </div>
+    </div>
+    <table id="divListGroup" class="table border table-striped mt-5">
+        <thead>
+            <tr>
+                <th>نام دسته بندی </th>
+                <th>توضیحات</th>
+                <th>حذف</th>
+            </tr>
+        </thead>
+    </table>
 </body>
 
 

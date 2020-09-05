@@ -73,6 +73,8 @@ function ChangeContent() {
             if (itemId != "" && itemId != undefined) {
                 EditNews(itemId);
             }
+        case "Loan":
+            BindLoanList();
         default:
     }
 }
@@ -139,6 +141,15 @@ function GetNewsById(Id) {
     var News = GetNews();
     News = News.filter(c => c.Id == Id);
     return News;
+}
+function GetLoan() {
+    var Loan = JSON.parse(AjaxCallGet("../Json/variable/Book.json"));
+    return Loan;
+}
+function GetLoanById(Id) {
+    var Loan = GetLoan();
+    Loan = Loan.filter(c => c.Id == Id);
+    return Loan;
 }
 function ScrollTop() {
     document.body.scrollTop = 0;

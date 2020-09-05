@@ -19,6 +19,8 @@
     var resMessage = AjaxCall(urlOptions, 1);//جوابی که تابع سی شارپی میده
     if (TryParseInt(resMessage, "x") != "x") {
         alert("با موفقیت ثبت شد");
+        GetElement("divListGroup").innerHTML = "";
+        BindGroupList();
         titleElement.value = "";
         titleElement.focus();
         descriptionElement.value = "";
@@ -110,6 +112,8 @@ function SaveDefineBook() {
     var resMessage = AjaxCall(fd);//جوابی که تابع سی شارپی میده
     if (TryParseInt(resMessage, "x") != "x") {
         alert("با موفقیت ثبت شد");
+        GetElement("divListBook").innerHTML = "";
+        BindBookList();
         nameElement.value = "";
         nameElement.focus();
         groupElement.value = "0";
@@ -127,23 +131,41 @@ function SaveDefineBook() {
     }
 }
 function UserSignUp() {
-    alert("Hello")
+    
     var userNameElement = GetElement("userName");
     var userName = userNameElement.value.trim();
+    var passwordElement = GetElement("password");
+    var password = passwordElement.value.trim();
+    var confirmPasswordElement = GetElement("confirmPassword");
+    var confirmPassword = confirmPasswordElement.value.trim();
+    var firstNameElement = GetElement("firstName");
+    var firstName = firstNameElement.value.trim();
+    var lastNameElement = GetElement("lastName");
+    var lastName = lastNameElement.value.trim();
+    var nationalCodeElement = GetElement("nationalCode");
+    var nationalCode = nationalCodeElement.value.trim();
+    var fatherNameElement = GetElement("fatherName");
+    var fatherName = fatherNameElement.value.trim();
+    var phoneNumberElement = GetElement("phoneNumber");
+    var phoneNumber = phoneNumberElement.value.trim();
+    var emailElement = GetElement("email");
+    var email = emailElement.value.trim();
+    var websiteElement = GetElement("website");
+    var website = websiteElement.value.trim();
+    var addressElement = GetElement("address");
+    var address = addressElement.value.trim();
     if (userName == null || userName == "") {
         userNameElement.focus();
         alert("وارد کردن نام الزامی است");
         return;
     }
-    var passwordElement = GetElement("password");
-    var password = passwordElement.value.trim();
+   
     if (password == null || password == "") {
         passwordElement.focus();
         alert("وارد کردن گذرواژه الزامی است");
         return;
     }
-    var confirmPasswordElement = GetElement("confirmPassword");
-    var confirmPassword = confirmPasswordElement.value.trim();
+   
     if (confirmPassword == null || confirmPassword == "") {
         confirmPasswordElement.focus();
         alert("وارد کردن مجددگذرواژه الزامی است");
@@ -153,15 +175,46 @@ function UserSignUp() {
         alert("گذرواژه و تکرار آن با هم همخوانی ندارد");
         return;
     }
+    if (firstName == null || firstName == "") {
+        firstNameElement.focus();
+        alert(" وارد کردن  نام الزامی است ")
+        return;
+    }
+    if (lastName == null || lastName == "") {
+        lastNameElement.focus();
+        alert(" وارد کردن  نام خانوادگی الزامی است ")
+        return;
+    }
+    if (nationalCode == null || nationalCode == "") {
+        nationalCodeElement.focus();
+        alert(" وارد کردن کدملی الزامی است ")
+        return;
+    }
+    if (fatherName == null || fatherName == "") {
+        fatherNameElement.focus();
+        alert(" وارد کردن نام پدر الزامی است ")
+        return;
+    }
+
     var id = window.location.hash.replace("!#", "").split("-")[2];
     if (id == undefined) {
         id = "";
     }
+    localStorage.setItem("userName", userName);
+    localStorage.setItem("password", password);
     var urlOptions = "type=3" +
         "&userName=" + userName +
         "&id=" + id +
         "&password=" + password +
-        "&confirmPassword=" + confirmPassword;
+        "&confirmPassword=" + confirmPassword +
+        "&firstName=" + firstName +
+        "&lastName=" + lastName +
+        "&nationalCode=" + nationalCode +
+        "&fatherName=" + fatherName +
+        "&phoneNumber=" + phoneNumber +
+        "&email=" + email +
+        "&website=" + website +
+        "&address=" + address;
     var resMessage = AjaxCall(urlOptions, 1);//جوابی که تابع سی شارپی میده
     if (TryParseInt(resMessage, "x") != "x") {
         alert("با موفقیت ثبت شد");
@@ -169,6 +222,15 @@ function UserSignUp() {
         passwordElement.value = "";
         confirmPasswordElement.value = "";
         userNameElement.focus();
+        firstNameElement.value = "";
+        lastNameElement.value = "";
+        nationalCodeElement.value = "";
+        fatherNameElement.value = "";
+        phoneNumberElement.value = "";
+        emailElement.value = "";
+        websiteElement.value = "";
+        addressElement.value = "";
+        localStorage.setItem("id", resMessage);
     }
     else {
         alert("failed");
@@ -193,10 +255,14 @@ function DeleteGroup(id) {
         var resMessage = AjaxCall(urlOptions, 1);
         if (TryParseInt(resMessage, "x") != "x") {
             alert("با موفقیت حذف شد");
+            GetElement("divListGroup").innerHTML = "";
+            BindGroupList();
+          
         }
         else {
             alert(resMessage);
         }
+        BindGroupList();
     }
 }
 function EditBook(Id) {
@@ -224,6 +290,8 @@ function DeleteBook(id) {
         var resMessage = AjaxCall(urlOptions, 1);
         if (TryParseInt(resMessage, "x") != "x") {
             alert("با موفقیت حذف شد");
+            GetElement("divListBook").innerHTML = "";
+            BindBookList();
         }
         else {
             alert(resMessage);
@@ -386,14 +454,33 @@ function SignIn() {
         return;
     }
     var User = JSON.parse(AjaxCallGet("../Json/variable/User.json"));
-    if (
-        (User.filter(c => c.UserName == userName &&
-            c.Password == password)).length > 0) {
-        window.location.hash = "#!main.html";
-
+    var storedName = localStorage.getItem("userName");
+    var storedPw = localStorage.getItem("password");
+    // check if stored data from register-form
+    if (storedName == null && storedPw == null) {
+        if ((User.filter(c => c.UserName == userName && c.Password == password)).length <= 0) {
+            alert('اطلاعات لاگین اشتباهه');
+        } else {
+            User = User.filter(c => c.UserName == userName && c.Password == password);
+            window.location.hash = "#!main.html";
+            localStorage.setItem("id", User[0].Id);
+            localStorage.setItem("userName", User[0].username);
+            localStorage.setItem("password", User[0].password);
+            return;
+        }
     }
-    else {
-        alert("نام کاربری یا رمز عبور اشتباه می باشد ")
+    if (storedName != null && storedPw != null) {
+        if (userName == storedName && password == storedPw) {
+            window.location.hash = "#!main.html";
+            return;
+        }
+        if ((User.filter(c => c.UserName == userName && c.Password == password)).length > 0) {
+            window.location.hash = "#!main.html";
+            return;
+        } else {
+            alert("اطلاعات لاگین اشتباهه");
+            return;
+        }
     }
 }
 function SaveNews() {
@@ -428,6 +515,7 @@ function SaveNews() {
     var resMessage = AjaxCall(fd);//جوابی که تابع سی شارپی میده
     if (TryParseInt(resMessage, "x") != "x") {
         alert("با موفقیت ثبت شد");
+        GetElement("divListNews").innerHTML = "";
         BindNewsAdminList();
         titleNewsElement.value = "";
         titleNewsElement.focus();
@@ -450,6 +538,8 @@ function DeleteNews(Id) {
         var resMessage = AjaxCall(urlOptions, 1);
         if (TryParseInt(resMessage, "x") != "x") {
             alert("با موفقیت حذف شد");
+            GetElement("divListNews").innerHTML = "";
+            BindNewsAdminList();
         }
         else {
             alert(resMessage);
@@ -468,9 +558,18 @@ function EditNews(Id) {
 function SaveAmanat(Id) {
     //alert(
     //    "امانت شما با موفقیت انجام شد. در صورتی که پس از دو روز به محل کتابخانه مراجعه نکیند، امانت شما لغو خواهد شد");
+    var storedName = localStorage.getItem("userName");
+
+    var storedPw = localStorage.getItem("password");
+    // check if stored data from register-form
+    if (storedName == null && storedPw == null || storedName==undefined && storedPw==undefined) {
+        alert("لطفا ابتدا لاگین شوید");
+        return;
+    }
     var id = Id;
     var book = GetBooksById(id);
     var fd = new FormData();
+    var submiterUserId = localStorage.getItem("id");
     fd.append("type", 2);
     fd.append("name", book[0].Name);
     fd.append("id", book[0].Id);
@@ -482,15 +581,40 @@ function SaveAmanat(Id) {
     fd.append("noeEraeKetab", book[0].erae);
     fd.append("printyear", book[0].PrintYear);
     fd.append("image", book[0].image);
-    fd.append("submitDateAmanat", "222222");
-    fd.append("userName", "مهدیه");
+    fd.append("userName", submiterUserId);
     var resMessage = AjaxCall(fd);
     if (TryParseInt(resMessage, "x") != "x") {
         alert("امانت شما با موفقیت انجام شد . لطفا طی ....");
-        GetElement("amant" + book[0].Id).style.display = "none";
-        GetElement("cancelAmant" + book[0].Id).style.display = "block";
+        GetElement("amant" + book[0].Id).style.display ="none";
+        GetElement("textAmant" + book[0].Id).style.display ="block";
 
     } else {
         alert(resMessage);
     }
 }
+//function CancelAmant(Id) {
+//    var id = Id;
+//    var book = GetBooksById(id);
+//    var fd = new FormData();
+//    fd.append("type", 2);
+//    fd.append("name", book[0].Name);
+//    fd.append("id", book[0].Id);
+//    fd.append("group", book[0].Category);
+//    fd.append("status", "0");
+//    fd.append("writer", book[0].Writer);
+//    fd.append("published", book[0].published);
+//    fd.append("publisher", book[0].publisher);
+//    fd.append("noeEraeKetab", book[0].erae);
+//    fd.append("printyear", book[0].PrintYear);
+//    fd.append("image", book[0].image);
+//    fd.append("submitDateAmanat", "");
+//    fd.append("userName", "مهدیه");
+//    var resMessage = AjaxCall(fd);
+//    if (TryParseInt(resMessage, "x") != "x") {
+//        alert("امانت شما لغو شد...");
+//        GetElement("amant" + book[0].Id).style.display = "block";
+
+//    } else {
+//        alert(resMessage);
+//    }
+//}

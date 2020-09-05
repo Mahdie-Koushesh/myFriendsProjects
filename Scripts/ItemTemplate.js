@@ -56,8 +56,8 @@ var BooksUserItem =
     "<p class=\"card-text\">[[published]]</p>" +
     "<p class=\"card-text\">[[Category]]</p>" +
     "<input type=\"button\" class=\"btn btn-info\" onclick=\"SaveAmanat([[Id]])\"   id=\"amant[[Id]]\" value=\"امانت\" />" +
-    "<input type=\"button\" class=\"btn btn-info\" onclick=\"CancelAmanat([[Id]])\"  id=\"cancelAmant[[Id]]\" style=\"display:none\" value=\"لغو امانت\" />" +
     "<input type=\"button\" class=\"btn btn-success\" id=\"downloadPDF[[Id]]\"  value=\"دانلود PDF\" />" +
+    "<p class=\"card-text\" id=\"textAmant[[Id]]\" style=\"display:none\">کتاب رزرو شده است</p>" +
     "</div>" +
     "</div>" +
     "</div>";
@@ -89,7 +89,7 @@ var LoanItem =
     "<td>[[UserName]]</td>" +
     "<td>[[SubmitDateAmant]]</td>" +
     "<td>" +
-    "<input type=\"button\" class=\"btn btn-danger btn-sm\" onclick=\'DeleteNews(\"[[Id]]\")\' value=\"لغو رزرو\" />" +
+    "<input type=\"button\" class=\"btn btn-info btn-sm\" onclick=\'DeleteNews(\"[[Id]]\")\' value=\"لغو رزرو\" />" +
     "</td>" +
     "</tr>" +
     "</tbody>";

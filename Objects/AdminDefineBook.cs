@@ -63,7 +63,6 @@ namespace aspa.Objects
     {
         public string Id { get; set; }
         public string TitleNews { get; set; }
-
         public string DesNews { get; set; }
         public string SubmitDateTime { get; set; }
         public List<string> ImageNews { get; set; }

@@ -5,14 +5,24 @@
     <title>مدیریت امانت</title>
 </head>
 <body>
-<table id="divListLoan" class="table border table-striped mt-5">
-    <thead>
-    <tr>
-        <th>نام کتاب </th>
-        <th>نام کاربری</th>
-        <th>تاریخ رزرو</th>
-    </tr>
-    </thead>
-</table>
+    <div class="container-fluid ">
+        <div class="row justify-content-center align-items-center border">
+            <div class="">
+                <input name="_txtLoanSearch" type="text" id="_txtLoanSearch" style="width: 400px;" placeholder="برای جست و جو قسمتی از نام کتاب را وارد کنید" onkeypress="if (event.keyCode === 13) { BindLoanList(); }">
+            </div>
+            <div>
+                <input type="submit" name="_btnLoanSearch" value="جستجو" id="_btnLoanSearch" class="btn btn-outline-success mr-5 mt-3" onclick="BindLoanList()">
+            </div>
+        </div>
+    </div>
+    <table id="divListLoan" class="table border table-striped mt-5">
+        <thead>
+            <tr>
+                <th>نام کتاب </th>
+                <th>نام کاربری</th>
+                <th>تاریخ رزرو</th>
+            </tr>
+        </thead>
+    </table>
 </body>
 </html>

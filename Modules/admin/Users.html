@@ -9,7 +9,17 @@
     <title>تعریف کاربر</title>
 </head>
 <body>
-    <table id="divListUser" class="table border table-striped mt-5" >
+    <div class="container-fluid ">
+        <div class="row justify-content-center align-items-center border">
+            <div class="">
+                <input name="_txtUserSearch" type="text" id="_txtUserSearch" style="width: 400px;" placeholder="برای جست و جو قسمتی از نام کاربری  را وارد کنید" onkeypress="if (event.keyCode === 13) { BindUserList(); }">
+            </div>
+            <div>
+                <input type="submit" name="_btnUserSearch" value="جستجو" id="_btnUserSearch" class="btn btn-outline-success mr-5 mt-3" onclick="BindUserList()">
+            </div>
+        </div>
+    </div>
+    <table id="divListUser" class="table border table-striped mt-5">
         <thead>
             <tr>
                 <th>نام کاربری </th>
@@ -24,7 +34,7 @@
                 <th>آدرس</th>
                 <th>تاریخ ثبت  </th>
                 <th>حذف</th>
-            </tr>    
+            </tr>
         </thead>
     </table>
 </body>
